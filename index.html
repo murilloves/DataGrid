@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="utf-8">
+		<link rel="stylesheet" type="text/css" href="/globals/main_test.css">
+	</head>
+	<body>
+		<div class="flexbox-centering">
+			<div class="grid-size">
+				<div>
+					<table id="table-name">
+						<thead class="table-header">
+							<tr>
+								<th>Name</th>
+								<th>Country</th>
+								<th>Value</th>
+								<th>Situation</th>
+							</tr>
+							<tr class="tr-search">
+								<th><input onkeyup="filter(0, this, 0)"></th>
+								<th><input onkeyup="filter(0, this, 1)"></th>
+								<th><input onkeyup="filter(0, this, 2)"></th>
+								<th><input onkeyup="filter(0, this, 3)"></th>
+							</tr>
+						</thead>
+						<tbody class="table-body">
+							<tr>
+								<td>Alfreds Futterkiste</td>
+								<td>Germany</td>
+								<td>10</td>
+								<td>Active</td>
+							</tr>
+							</tr>
+							<tr>
+								<td>Berglunds snabbkop</td>
+								<td>Sweden</td>
+								<td>20</td>
+								<td>Active</td>
+							</tr>
+							</tr>
+							<tr>
+								<td>Island Trading</td>
+								<td>UK</td>
+								<td>10</td>
+								<td>Active</td>
+							</tr>
+							</tr>
+							<tr>
+								<td>Koniglich Essen</td>
+								<td>Germany</td>
+								<td>30</td>
+								<td>Active</td>
+							</tr>
+							</tr>
+							<tr>
+								<td>Laughing Bacchus Winecellars</td>
+								<td>Canada</td>
+								<td>50</td>
+								<td>Active</td>
+							</tr>
+							</tr>
+							<tr>
+								<td>Magazzini Alimentari Riuniti</td>
+								<td>Italy</td>
+								<td>100</td>
+								<td>Active</td>
+							</tr>
+							</tr>
+							<tr>
+								<td>North/South</td>
+								<td>UK</td>
+								<td>0</td>
+								<td>Inactive</td>
+							</tr>
+							</tr>
+							<tr>
+								<td>Paris specialites</td>
+								<td>France</td>
+								<td>5</td>
+								<td>Inactive</td>
+							</tr>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<script>
+	const rowsNumber = document.getElementById('table-name').rows[0].cells.length;
+
+	function filter(type, element, colNumber) {
+		let inputs, filter, table, tr, td, i;
+		inputs = document.getElementsByTagName('td');
+		console.log();
+
+		filter = element.value.toLowerCase();
+		table = document.getElementById('table-name');
+		tr = table.getElementsByTagName('tr');
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName('td')[colNumber];
+			if (td) {
+				if (td.innerHTML.toLowerCase().indexOf(filter) > -1) {
+					tr[i].style.display = '';
+				} else {
+					tr[i].style.display = 'none';
+				}
+			}
+		}
+	}
+</script>
